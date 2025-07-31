@@ -1,22 +1,25 @@
 # **📌1- A list of all Git commands you used**📌
-1- git add calculator.py
-2- git commit -m "feat: Add basic calculator functions (add, subtract)"
-3- git add calculator.py
-4- git commit -m "feat: Add multiply function"
-5- git add calculator.py
-6- git commit -m "fix: Optimize subtract function logic (introducing bug)"
-7- git status
-8- git log --oneline 
-9- git add calculator.py
-10- git commit -m "feat: Add divide function with zero check"
-11- git diff '7e2d4d1~1' 7e2d4d1 -- calculator.py
-12- git status 
-13- git stash
-14- git reset --hard 4f5baa8
-15- git log --oneline 
-16- python3 calculator.py
-17- git stash pop
-18- git push --force origin
+
+<pre><code>```bash
+git add calculator.py
+git commit -m "feat: Add basic calculator functions (add, subtract)"
+git add calculator.py
+git commit -m "feat: Add multiply function"
+git add calculator.py
+git commit -m "fix: Optimize subtract function logic (introducing bug)"
+git status
+git log --oneline 
+git add calculator.py
+git commit -m "feat: Add divide function with zero check"
+git diff '7e2d4d1~1' 7e2d4d1 -- calculator.py
+git status 
+git stash
+git reset --hard 4f5baa8
+git log --oneline 
+python3 calculator.py
+git stash pop
+git push --force origin
+```</code></pre>
 
 
 # **📌2-Screenshots of your terminal output**📌
@@ -58,7 +61,7 @@ print(f"Dividing 20 by 5: {divide(20, 5)}")
 print("Experimental feature: Fibonacci sequence next")
 ```
 
-# **📌4-Written Explanations:**📌
+# **📌4-Written Explanations**📌
 
 ## 1-Briefly explain how git log and git diff helped you identify the erroneous commit.
 
