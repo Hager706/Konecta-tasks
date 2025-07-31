@@ -1,6 +1,6 @@
 # **📌1- A list of all Git commands you used**📌
 
-<pre><code>```bash
+<pre><code>
 git add calculator.py
 git commit -m "feat: Add basic calculator functions (add, subtract)"
 git add calculator.py
@@ -19,7 +19,7 @@ git log --oneline
 python3 calculator.py
 git stash pop
 git push --force origin
-```</code></pre>
+</code></pre>
 
 
 # **📌2-Screenshots of your terminal output**📌
