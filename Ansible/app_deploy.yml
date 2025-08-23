@@ -1,0 +1,79 @@
+---
+- name: Deploy Node.js Application to Red Hat Staging Environment
+  hosts: web
+  become: yes
+  vars:
+    app_name: my_node_app
+    app_dir: /opt/{{ app_name }}
+    app_port: 3000
+
+  tasks:
+    - name: Update package cache (Red Hat/CentOS)
+      yum:
+        update_cache: yes
+
+    - name: Install Node.js and npm
+      yum:
+        name:
+          - nodejs
+          - npm
+        state: present
+
+    - name: Create application directory
+      file:
+        path: "{{ app_dir }}"
+        state: directory
+        owner: hager
+        group: hager
+        mode: '0755'
+
+    - name: Copy application files
+      copy:
+        src: "{{ item }}"
+        dest: "{{ app_dir }}/{{ item | basename }}"
+        owner: hager
+        group: hager
+        mode: '0644'
+      loop:
+        - files/app.js
+        - files/package.json
+      notify:
+        - restart node app
+
+    - name: Install Node.js dependencies
+      npm:
+        path: "{{ app_dir }}"
+      become_user: hager
+
+    - name: Create systemd service file
+      template:
+        src: templates/my_node_app.service.j2
+        dest: /etc/systemd/system/{{ app_name }}.service
+        mode: '0644'
+      notify:
+        - reload systemd
+        - restart node app
+
+    - name: Open firewall port for application
+      firewalld:
+        port: "{{ app_port }}/tcp"
+        permanent: yes
+        state: enabled
+        immediate: yes
+
+    - name: Enable and start the Node.js application service
+      systemd:
+        name: "{{ app_name }}"
+        state: started
+        enabled: yes
+        daemon_reload: yes
+
+  handlers:
+    - name: reload systemd
+      systemd:
+        daemon_reload: yes
+
+    - name: restart node app
+      systemd:
+        name: "{{ app_name }}"
+        state: restarted

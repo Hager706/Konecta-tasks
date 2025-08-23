@@ -1,0 +1,2 @@
+[web]
+redhat   ansible_user=hager
