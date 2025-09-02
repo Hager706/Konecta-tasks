@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: fe
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: mongo-db
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: mongo-express
