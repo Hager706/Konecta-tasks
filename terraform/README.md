@@ -122,4 +122,4 @@ This architecture re-implements Arch1 but using **Terraform Modules** for better
 
 ---
 
-repo link : 
+repo link : https://github.com/Hager706/Konecta-tasks/tree/main/terraform
